@@ -16,9 +16,6 @@ yolo_model.conf = 0.30
 
 patterns_modelpath = "./solid_color_models/pattern_model_24-03-06.h5" 
 patterns_model = tf.keras.models.load_model(patterns_modelpath)
-labels_patterns = ["patterns", 
-                "no patterns", 
-]
 
 jeans_modelpath = "./solid_color_models/jeans_model_24-03-06.h5" 
 jeans_model = tf.keras.models.load_model(jeans_modelpath)
@@ -33,9 +30,8 @@ labels_geometric = ["check",
                     "dots"
 ]
 
-img_dim = (64,64)
-
 def load_and_preprocess_image(image_path):
+    img_dim = (64,64)
     img = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
     img = cv2.resize(img, img_dim)
     img = img[:, :, np.newaxis]
@@ -51,12 +47,10 @@ def predict_pattern_keras(img_preprocessed):
         predicted_class_jeans = np.argmax(predictions_jeans)
         return labels_jeans[predicted_class_jeans]
         
-    elif pred_class_pattern == 0: # pattern
+    else:
         pred_geometric = geometric_model.predict(img_preprocessed)
         pred_class_geometric = np.argmax(pred_geometric)
         return labels_geometric[pred_class_geometric]
-    else:
-        return "Unknown Pattern"
 
 # Function to predict pattern for images
 def predict_pattern_for_images(img_paths):

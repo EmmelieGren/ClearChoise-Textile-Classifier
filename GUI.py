@@ -2,10 +2,10 @@ import tkinter as tk
 from tkinter import filedialog
 import cv2
 from PIL import Image, ImageTk
-import torch
+#import torch
 import numpy as np
 from functions import predict_pattern_for_images
-import tensorflow as tf
+#import tensorflow as tf
 
 
 def open_image():
