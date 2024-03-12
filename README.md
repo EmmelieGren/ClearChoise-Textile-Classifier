@@ -6,6 +6,5 @@ The aim of this project is to develop a pattern classifier. By inputting an imag
 Examples from GUI
 ![image](https://github.com/EmmelieGren/ClearChoise-Textile-Classifier/assets/112870438/ef49cb43-c187-445e-9c17-64100ebfd8ee)
 ![image](https://github.com/EmmelieGren/ClearChoise-Textile-Classifier/assets/112870438/dcf2127f-bbd1-4b1e-b415-5aa15a45fe8a)
-![image](https://github.com/EmmelieGren/ClearChoise-Textile-Classifier/assets/112870438/66304896-ead4-4c56-991a-15a0ef3c1bcb)
 
 
