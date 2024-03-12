@@ -47,26 +47,26 @@ def predict_pattern_keras(img_preprocessed):
     pred_class_pattern = np.argmax(pred_pattern)
 
     if pred_class_pattern == 1:  # solid color
-        pred_jeans = np.argmax(pred_pattern)
-        if pred_jeans == 1:  # jeans
-            return labels_jeans[pred_jeans]
-        else:
-            return labels_patterns[pred_class_pattern]
-    elif pred_class_pattern == 0:
+        predictions_jeans = jeans_model.predict(img_preprocessed)
+        predicted_class_jeans = np.argmax(predictions_jeans)
+        return labels_jeans[predicted_class_jeans]
+        
+    elif pred_class_pattern == 0: # pattern
         pred_geometric = geometric_model.predict(img_preprocessed)
         pred_class_geometric = np.argmax(pred_geometric)
         return labels_geometric[pred_class_geometric]
     else:
         return "Unknown Pattern"
 
-
+# Function to predict pattern for images
 def predict_pattern_for_images(img_paths):
     predictions = []
     for img_path in img_paths:
         img = cv2.imread(img_path)
-        yolo_result = yolo_model(img)
-        yolo_preds = yolo_result.pandas().xyxy[0]
-        
+        with torch.no_grad():
+            results = yolo_model(img)  
+            yolo_preds = results.pandas().xyxy[0]
+
         if len(yolo_preds) > 0:
             predictions.append("Flowers")
         else:
