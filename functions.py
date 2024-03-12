@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 import torch
 import tensorflow as tf
+import pyttsx3
 
 # Yolo problem
 import pathlib
@@ -19,7 +20,7 @@ patterns_model = tf.keras.models.load_model(patterns_modelpath)
 
 jeans_modelpath = "./solid_color_models/jeans_model_24-03-06.h5" 
 jeans_model = tf.keras.models.load_model(jeans_modelpath)
-labels_jeans = ["Not jeans", 
+labels_jeans = ["Solid color", 
                 "Jeans", 
 ]
 
@@ -46,6 +47,7 @@ def predict_pattern_keras(img_preprocessed):
         predictions_jeans = jeans_model.predict(img_preprocessed)
         predicted_class_jeans = np.argmax(predictions_jeans)
         return labels_jeans[predicted_class_jeans]
+        # model for predicting color?
         
     else:
         pred_geometric = geometric_model.predict(img_preprocessed)
@@ -69,3 +71,14 @@ def predict_pattern_for_images(img_paths):
             predictions.append(prediction)
     
     return predictions
+
+
+# Text to speach
+def speak(text):
+    engine = pyttsx3.init()
+    engine.setProperty('rate', 150)    # Speed percent 
+    engine.setProperty('volume', 0.9)  # Volume 0-1
+
+    engine.say(text)
+
+    engine.runAndWait()
