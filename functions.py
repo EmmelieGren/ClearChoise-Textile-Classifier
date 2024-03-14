@@ -10,7 +10,7 @@ from pathlib import Path
 pathlib.PosixPath = pathlib.WindowsPath
 
 yolo_path = "C:/Users/emmel/Desktop/yolov5"
-model_path = "./Flower_model/flower_model_28-02-24.pt"
+model_path = "./Flower_model/flower_model_14-03-24.pt"
 
 yolo_model = torch.hub.load(yolo_path, 'custom', path=model_path, source='local')
 yolo_model.conf = 0.30
