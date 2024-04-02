@@ -15,7 +15,7 @@ model_path = "./Flower_model/flower_model_14-03-24.pt"
 yolo_model = torch.hub.load(yolo_path, 'custom', path=model_path, source='local')
 yolo_model.conf = 0.30
 
-patterns_modelpath = "./solid_color_models/pattern_model_24-03-06.h5" 
+patterns_modelpath = "./solid_color_models/pattern_model_24-03-14.h5" 
 patterns_model = tf.keras.models.load_model(patterns_modelpath)
 
 jeans_modelpath = "./solid_color_models/jeans_model_24-03-06.h5" 
@@ -82,3 +82,5 @@ def speak(text):
     engine.say(text)
 
     engine.runAndWait()
+
+# Apply a choise for female/male voice output?
