@@ -2,3 +2,5 @@
 /img
 /img_for_test
 /img_sliced_and_tilted
+geometric_model/best_model.h5
+geometric_model/resnet.h5
