@@ -24,7 +24,7 @@ labels_jeans = ["Solid color",
                 "Jeans", 
 ]
 
-geometric_modelpath = "./geometric_model/geometric_24-03-04.h5" 
+geometric_modelpath = "./geometric_model/geometric_24-03-27.h5" 
 geometric_model = tf.keras.models.load_model(geometric_modelpath)
 labels_geometric = ["check", 
                     "stripe", 
